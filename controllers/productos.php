@@ -31,6 +31,34 @@
 
 
             break;
+        
+        case "guardaryeditar": 
+
+            $datos = $productos->get_productoID($_POST["id"]);
+            if (empty($_POST["id"])) {
+                if( is_array($datos) === true and count($datos) == 0 ) {
+                    $productos->insert_producto($_POST["nomproducto"]);
+                }
+            } else {
+                $productos->update_producto($_POST["id"], $_POST["nomproducto"]);
+            }
+            break;
+        
+        case "mostrar";
+
+            $datos = $productos->get_productoID($_POST["id"]);
+            if( is_array($datos) === true and count($datos) == 0 ) {
+                foreach( $datos as $row) {
+                    $output["id"] = $row["id"];
+                    $output["nomproducto"] = $row["nomproducto"];
+                }
+            }            
+            break;
+        
+            case "eliminar": 
+
+                $productos->delete_producto( $_POST["id"]);
+                break;
     }
 
 ?>

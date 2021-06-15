@@ -61,7 +61,7 @@ function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#producto_form")[0]);
     $.ajax({
-        url: "../../controller/producto.php?op=guardaryeditar",
+        url: "../../controllers/productos.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -81,11 +81,11 @@ function guardaryeditar(e){
     });
 }
 
-function editar(prod_id){
-    console.log(prod_id);
+function editar(id){
+    console.log(id);
 }
 
-function eliminar(prod_id){
+function eliminar(id){
     swal.fire({
         title: 'CRUD',
         text: "Desea Eliminar el Registro?",
@@ -97,7 +97,7 @@ function eliminar(prod_id){
     }).then((result) => {
         if (result.isConfirmed) {
 
-            $.post("../../controller/producto.php?op=eliminar",{prod_id:prod_id},function (data) {
+            $.post("../../controllers/productos.php?op=eliminar",{id:id},function (data) {
 
             });
 

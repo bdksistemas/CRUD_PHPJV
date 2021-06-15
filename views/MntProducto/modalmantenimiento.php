@@ -6,11 +6,11 @@
                     <h4 class="modal-title" id="mdltitulo"></h4>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="prod_id" name="prod_id">
+                    <input type="hidden" id="prod_id" name="id">
 
                     <div class="form-group">
                         <label class="form-label" for="prod_nom">Nombre</label>
-                        <input type="text" class="form-control" id="prod_nom" name="prod_nom" placeholder="Ingrese Nombre" required>
+                        <input type="text" class="form-control" id="prod_nom" name="nomproducto" placeholder="Ingrese Nombre" required>
                     </div>
                 </div>
                 <div class="modal-footer">
