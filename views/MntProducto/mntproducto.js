@@ -82,7 +82,20 @@ function guardaryeditar(e){
 }
 
 function editar(id){
-    console.log(id);
+    $('#mdltitulo').html('Editar Producto');
+
+    $.post("../../controllers/productos.php?op=mostrar", {id:id}, function(data) {
+        
+        //console.log(data);
+        data = JSON.parse(data);        
+        $('#id').val(data.id);
+        $('#nomproducto').val(data.nomproducto);
+        $('#prod_desc').val(data.prod_desc);
+
+
+    });
+
+    $('#modalmantenimiento').modal('show');
 }
 
 function eliminar(id){
@@ -114,6 +127,8 @@ function eliminar(id){
 
 $(document).on("click","#btnnuevo", function(){
     $('#mdltitulo').html('Nuevo Registro');
+    $('#producto_form')[0].reset();
+    $('#id').val('');
     $('#modalmantenimiento').modal('show');
 });
 

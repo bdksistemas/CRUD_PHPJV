@@ -42,28 +42,30 @@
         }
 
         //? FUNCIÓN PARA AGREGAR UN REGISTRO
-        public function insert_producto( $nomproducto ) {
+        public function insert_producto( $nomproducto, $prod_desc ) {
 
             $conectar = parent::Conexion();
             parent::set_names();
 
-            $sql = "INSERT INTO tbproductos (id, nomproducto, fecnvo, fecmod, feceli, estado) VALUES (0, ?, NOW(), null, null, 1)";
+            $sql = "INSERT INTO tbproductos (id, nomproducto, prod_desc, fecnvo, fecmod, feceli, estado) VALUES (0, ?, ?, NOW(), null, null, 1)";
             $sql = $conectar->prepare($sql);
-            $sql->bindValue(1,$nomproducto);
+            $sql->bindValue(1, $nomproducto);
+            $sql->bindValue(2, $prod_desc);
             $sql->execute();
             return $resultado = $sql->fetchAll();
         }
 
         //? FUNCIÓN PARA MODIFICAR UN REGISTRO
-        public function update_producto( $id, $nomproducto ) {
+        public function update_producto( $id, $nomproducto, $prod_desc ) {
 
             $conectar = parent::Conexion();
             parent::set_names();
 
-            $sql = "UPDATE tbproductos SET nomproducto=?, fecmod=NOW() WHERE id=?";
+            $sql = "UPDATE tbproductos SET nomproducto=?, prod_desc?, fecmod=NOW() WHERE id=?";
             $sql = $conectar->prepare($sql);
             $sql->bindValue(1, $nomproducto);
-            $sql->bindValue(2, $id);
+            $sql->bindValue(2, $prod_desc);
+            $sql->bindValue(3, $id);
             $sql->execute();
             return $resultado = $sql->fetchAll();
         }
